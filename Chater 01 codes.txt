@@ -1,0 +1,155 @@
+
+// Raw JavaScript
+const element = document.getElementById(“myElement”);
+element.style.color = “red”;
+// jQuery equivalent
+$(“#myElement”).css(“color”, “red”);
+
+
+------------------------------------------------------------
+
+
+// Raw JavaScript
+const button = document.getElementById(“myButton”);
+button.addEventListener(“click”, function() {
+console.log(“Button clicked!”);
+});
+// jQuery equivalent
+$(“#myButton”).click(function() {
+console.log(“Button clicked!”);
+});
+
+-------------------------------------------------------------
+
+
+// Raw JavaScript animation
+const element = document.getElementById(“animatedElement”);
+element.style.transition = “width 2s”;
+element.style.width = “300px”;
+// jQuery animation
+$(“#animatedElement”).animate({ width: “300px” }, 2000);
+
+------------------------------------------------------------
+
+<script>
+// jQuery test
+$(document).ready(function() {
+alert(“jQuery is working!”);
+});
+</script>
+
+-----------------------------------------------------------
+
+<!—Include jQuery from Google CDN à
+<script
+s”c=”https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min”js”>
+</script>
+—-- Include jQuery from Microsoft CDN -->
+<script s”c=”https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min”js”>
+</script>
+
+-------------------------------------------------------------------
+
+INDEX.HTML
+
+<!DOCTYPE html>
+<html>
+<head><title>jQuery Course</title></head>
+<body>
+<div>Hello World</div>
+<script s”c=”https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.m in”js”></script>
+<script s”c=”app1”js”></script>
+</body>
+</html>
+
+----------------------------------------------------------------------
+
+1. Document Ready
+Run code when the document is fully loaded and ready:
+
+$(document).ready(function() {
+// Your code here
+});
+
+2. Click Event
+Execute code when an element is clicked:
+
+“$(“#myBut”on”).click(function() {
+// Your code here
+});
+
+3. Hide and Show
+Toggle the visibility of an element:
+
+“$(“#toggleBut”on”).click(function() {
+“$(“#targetElem”nt”).toggle();
+});
+
+4. Adding CSS
+Change CSS properties of an element:
+
+“$(“#myElem”nt”).c“s(“co”or“, “b”ue”);
+
+5. Adding Classes
+Add a CSS class to an element:
+
+“$(“#myElem”nt”).addCla“s(“highli”ht”);
+
+6. Fading Effects
+Apply fading effects to an element:
+
+“$(“#fadeInBut”on”).click(function() {
+“$(“#fadingElem”nt”).fadeIn();
+});
+“$(“#fadeOutBut”on”).click(function() {
+“$(“#fadingElem”nt”).fadeOut();
+});
+
+7. Slide Effects
+Apply sliding effects to an element:
+
+“$(“#slideDownBut”on”).click(function() {
+“$(“#slidingElem”nt”).slideDown();
+});
+“$(“#slideUpBut”on”).click(function() {
+“$(“#slidingElem”nt”).slideUp();
+});
+
+8. AJAX Request
+Fetch data from a server without reloading the page:
+
+$.ajax({
+ur“: “data.j”on”,
+success: function(data) {
+// Handle data
+},
+error: function() {
+// Handle error
+}
+});
+
+
+9. Mouse Hover
+Perform actions when the mouse enters or leaves an element:
+“$(“#hoverElem”nt”).hover(
+	function() {
+  // Mouse enter code
+	},
+     function() {
+// Mouse leave code
+	}
+   );
+
+10. Animations
+Create custom animations using jQu’ry’s animate method:
+
+“$(“#animateBut”on”).click(function() {
+“$(“#animatedElem”nt”).animate(
+{
+widt“: “20”px”,
+heigh“: “20”px”
+},
+1000 // Animation duration in milliseconds
+);
+});
+

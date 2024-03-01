@@ -1,0 +1,300 @@
+// Select by tag
+$(“p”) // Selects all <p> elements
+// Select by class
+$(“.highlight”) // Selects elements with class “highlight”
+// Select by ID
+$(“#header”) // Selects the element with ID “header”
+
+
+------------------------------------------------------------------
+
+HTML:
+
+<!DOCTYPE html>
+<html>
+<head><title>jQuery Course</title></head>
+<body>
+<div>Hello World 1</div>
+<div class=”div2”>Hello World 2</div>
+<div id=”div3”>Hello World 3</div>
+<script
+src=”https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.m in.js”></script>
+<script src=”app2.js”></script>
+</body>
+</html>
+
+--------------------------------------------------------------------------
+
+APP2.JS
+
+console.log($(‘div’));
+$(‘div’).html(‘Hello’);
+console.log($(‘.div2’));
+console.log($(‘#div3’));
+console.log($(‘#div3, .div2’));
+const $ele1 = $(‘div’);
+console.log($ele1);
+$ele1.html(‘Hello 2’);
+const $ele2 = $(‘.div2’);
+console.log($ele2);
+const $ele3 = $(‘#div3’);
+console.log($ele3);
+const $ele4 = $(‘#div3, .div2’);
+console.log($ele4);
+
+-----------------------------------------------------------------------------
+
+// Select by attribute
+$(“input[type=’text’]”) // Selects all text input elements
+// Select with specific attribute
+$(“[data-toggle]”) // Selects elements with “data-toggle” attribute
+
+Exercise: Select using the attribute:
+HTML:
+
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+<meta charset=”UTF-8”>
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+<title>Attribute Selector Example</title>
+<script src=”https://code.jquery.com/jquery-3.6.0.min.js”></script>
+</head>
+<body>
+<h1>Attribute Selector Example</h1>
+<button data-toggle=”modal”>Open Modal</button>
+<button data-toggle=”sidebar”>Open Sidebar</button>
+<script src=”script.js”></script>
+</body>
+</html>
+
+JavaScript (script.js):
+
+$(document).ready(function() {
+// Attach a click event to elements with data-toggle attribute
+$(“[data-toggle]”).click(function() {
+		const target = $(this).data(“toggle”);
+		alert(`Toggle ${target}`);
+	});
+});
+
+---------------------------------------------------------------
+
+// Select the first <li> element inside <ul>
+$(“ul li:first-child”)
+// Select odd-numbered <tr> elements in a table
+$(“table tr:nth-child(odd)”)
+
+Exercise: Using jQuery, select the first list item and change its background color to blue:
+HTML:
+
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+<meta charset=”UTF-8”>
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+<title>Change CSS with jQuery</title>
+<script src=”https://code.jquery.com/jquery-3.6.0.min.js”></script>
+</head>
+<body>
+<h1>Change CSS with jQuery</h1>
+<ul>
+   <li>Item 1</li>
+   <li>Item 2</li>
+   <li>Item 3</li>
+</ul>
+<script src=”script.js”></script>
+</body>
+</html>
+
+JavaScript (script.js):
+
+$(document).ready(function() {
+// Change CSS for the first list item
+$(“ul li:first-child”).css(“color”, “blue”);
+});
+
+
+--------------------------------------------------------------
+
+HTML:
+
+<!DOCTYPE html>
+<html>
+<head><title>jQuery Course</title>
+<style>
+.box{
+width:200px;
+border:5px solid #ddd;
+padding:20px;
+margin:10px;
+}
+</style>
+</head>
+<body><nav class=”main”>
+<div class=”main”>
+<div xclass=”div1”>Hello World 1</div>
+<div class=”div2”><span>Hello World 2</span></div> <div class=”div3” id=”div3”>Hello World 3</div> <div class=”div4”>Laurence Svekis</div>
+<input >
+<div class=”main”>
+<button id=”btn1”>1</button>
+<button id=”btn2”>2</button>
+</div>
+<button id=”btn1”>3</button>
+</div></nav>
+<button id=”btn1”>4</button>
+<script
+src=”https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.m in.js”></script>
+<script src=”app14.js”></script>
+</body>
+</html>
+
+app14.js
+
+$(‘#btn1’).click(function(){
+console.log($(this).parent().length);
+console.log($(this).parents().length);
+console.log($(this).parents());
+console.log($(this).parents(‘.main’));
+console.log($(this).parentsUntil(‘nav’));
+})
+$(‘#btn2’).click(function(){
+$(this).parents(‘.main’).each(function(){
+$(this).addClass(‘parentM’);
+})
+})
+
+-------------------------------------------------------
+
+// Filter by even-numbered elements
+$(“li”).filter(“:even”)
+
+// Filter by elements containing specific text
+$(“p”).filter(“:contains(‘jQuery’)”)
+
+--------------------------------------------------------
+HTML:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery Course</title>
+<style>
+.box {
+border: 1px solid #ddd;
+padding: 5px;
+color: red;
+}
+.box1 {
+border: 1px solid #ddd;
+padding: 5px;
+color: blue;
+}
+
+.box2 {
+border: 1px solid #ddd;
+padding: 5px;
+color: green;
+}
+</style>
+</head>
+<body>
+<nav>
+<div class=”main”>
+<div class=”div1”>Hello World 1</div>
+<div class=”div2”><span>Hello World 2</span></div> <div class=”div3” id=”div3”>Hello World 3</div> <div class=”div4”>Laurence Svekis</div>
+<input>
+<button id=”btn1”>1</button>
+<button id=”btn2”>2</button>
+<button id=”btn3”>3</button>
+<span>Hello</span>
+</div>
+</nav>
+<button id=”btn4”>4</button>
+<button id=”btn5”>5</button>
+<script
+src=”https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.m in.js”></script>
+<script src=”app16.js”></script>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+app16.js
+
+$(‘#btn1’).click(()=>{
+console.log($(‘.main’).children());
+$main = $(‘.main’).children();
+$main.first().css(‘color’,’red’);
+$main.last().css(‘color’,’blue’);
+$main.eq(7).css(‘color’,’green’);
+$main.eq(6).css(‘background-color’,’green’);
+})
+$(‘#btn2’).click(()=>{
+$main = $(‘.main’).children();
+$btns = $main.filter(‘button’);
+$main.filter(‘button’).css(‘background-color’,’black’); $btns.css(‘color’,’
+white’);
+})
+$(‘#btn3’).click(()=>{
+$main = $(‘.main’).children();
+$btns = $main.not(‘button’);
+$main.not(‘button’).css(‘background-color’,’purple’); $btns.css(‘color’,’
+white’);
+})
+$(‘#btn4’).click(()=>{
+$(‘.main div’).not(‘.div1’).css(‘color’,’red’); })
+$(‘#btn5’).click(()=>{
+$(‘.main div’).filter(‘div’).css(‘color’,’green’); })
+
+-------------------------------------------------------
+
+// Chain methods to select and manipulate an element
+$(“#myElement”).addClass(“highlight”).slideUp(1000);
+
+Exercise: How to chain multiple methods together:
+
+HTML:
+
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+<meta charset=”UTF-8”>
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+<title>Chaining Methods with jQuery</title>
+<script src=”https://code.jquery.com/jquery-3.6.0.min.js”></script>
+</head>
+<body>
+<h1>Chaining Methods with jQuery</h1>
+<div id=”box”></div>
+<button id=”animateButton”>Animate</button>
+<script src=”script.js”></script>
+</body>
+</html>
+
+
+JavaScript (script.js):
+
+$(document).ready(function() {
+// Attach click event to the animate button
+$(“#animateButton”).click(function() {
+// Chain methods to animate the box
+$(“#box”)
+.css(“background-color”, “blue”)
+.animate({ width: “200px” }, 1000)
+.delay(500)
+.fadeOut()
+.fadeIn()
+.slideUp();
+});
+});
+
+-----------------------------------------------
+
+
+
+
+
+
+
+
