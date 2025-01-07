@@ -1,0 +1,199 @@
+HTML for this section :
+
+<!DOCTYPE html> 
+<html> 
+<head><title>jQuery Course</title> 
+</head> 
+<body> 
+<div>Hello World 1</div> 
+<div class="div2">Hello World 2</div> 
+<div id="div3">Hello World 3</div> 
+<button>Show</button> 
+<script 
+src="jquery.m in.js"></script> 
+<script src="app3.js"></script> 
+</body> 
+</html> 
+
+JavaScript JS code :
+
+console.log($('div').first()); 
+const val = '<h1>Laurence Svekis</h1>'; 
+$('div').first().html(val); 
+$('div').last().text(val); 
+$('div').click((e)=>{ 
+const $el = $(e.target); 
+console.log($el); 
+$el.html('clicked'); 
+$(e.target).text('Ready'); 
+$(e.target).hide("slow"); 
+}); 
+$('button').click((e)=>{ 
+$('div').show("fast"); 
+$('h1').show(4000); 
+}); 
+function eleClicker(e){ 
+console.log(e); 
+} 
+
+------------------------------------------------
+
+HTML Code:
+
+<div>Hello World 1</div> 
+<div class="div2">Hello World 2</div> 
+<div id="div3">Hello World 3</div> 
+<button>Show</button> 
+
+Source Code JS:
+
+$('div').first().html(val); 
+let counter = 0; 
+let hiddenEle = 0; 
+let fader = 0.5; 
+$('div').click(function(e){ 
+//$(e.target).fadeOut(1000); 
+console.log($(this)); 
+console.log($(this).text()); 
+$(this).fadeOut(1000,()=>{ 
+counter++; 
+hiddenEle++; 
+const temp = `<h3>Counter ${counter}</h3>`; $(this).html(temp); 
+$('button').text(`Show (${hiddenEle})`); }); 
+}) 
+$('button').click((e)=>{ 
+//$('div').fadeIn("slow"); 
+/* 
+$('div').fadeToggle('slow',function(){ $(this).text('Was toggled'); 
+}) 
+*/ 
+$('div').toggle(1500); 
+hiddenEle = 0; 
+$('button').text(`All Showing`); 
+$('button').fadeTo('slow',fader,()=>{ 
+if(fader == 0.5){ 
+fader = 1; 
+}else{ 
+fader = 0.5; 
+} 
+}) 
+}) 
+
+----------------------------------------------
+
+HTML Code
+
+<div>Hello World 1</div> 
+<div class="div2">Hello World 2</div> 
+<div id="div3">Hello World 3</div> 
+<button id="btn1">Hide</button> 
+<button id="btn2">Show</button> 
+
+JavaScript Code
+
+$('#btn2').hide(); 
+
+$('#btn1').click(() => { 
+  $('div').slideUp('slow', doneFun); 
+});
+
+$('#btn2').click(() => { 
+  $('div').slideDown('fast', doneFun); 
+});
+
+$('div').click(function() { 
+  $(this).slideToggle(); 
+});
+
+function doneFun() { 
+  console.log('slide done'); 
+  $('#btn1').toggle(); 
+  $('#btn2').toggle(); 
+}
+
+$('#btn2').hide();
+
+----------------------------------------------
+$("#customAnimationElement").animate(
+  {
+    width: "200px",
+    opacity: 0.5
+  },
+  1000
+);
+
+------------------------------------------------
+$(document).ready(function() {
+  $("#moveButton").click(function() {
+    $(".box").animate(
+      {
+        left: "+=50px",
+        top: "+=30px",
+        margin: "10px",
+        transform: "rotate(45deg)",
+        zIndex: 2,
+      },
+      1000 // Duration in milliseconds
+    );
+  });
+});
+-----------------------------------------------
+
+HTML Code
+<div class="div1">Hello World 1</div> 
+<div class="div2">Hello World 2</div> 
+<div class="div3" id="div3">Hello World 3</div> 
+<button id="btn1">1</button> 
+<button id="btn2">2</button> 
+
+CSS Code
+div{ 
+left:100px; 
+position:relative; 
+border:1px solid #ddd; 
+width:120px; 
+} 
+
+JavaScript code
+$('#btn1').click(() => { 
+  $('.div1').text(`I'm moving`); 
+  $('.div1').animate({ 
+    left: "+=20", 
+    opacity: 0.5 
+  }, 1000, () => { 
+    $('.div1').text(`STOPPED`); 
+  }); 
+  $('.div2').animate({ 
+    left: "+=50", 
+    fontSize: "20px" 
+  }, 3000, () => { 
+    $('.div2').text(`Laurence Svekis`); 
+  }); 
+  $('.div3').animate({ 
+    top: "+=50", 
+    width: "150px", 
+    height: "150px" 
+  }, 1000, () => { 
+    $('.div2').text(`Laurence Svekis`); 
+  }); 
+})
+
+$('#btn2').click(() => { 
+  $('.div1').text(`I'm moving`).animate({ 
+    left: "-=50", 
+    opacity: 1 
+  }, 1000, () => { 
+    $('.div1').text(`STOPPED`); 
+  }); 
+  $('.div3').animate({ 
+    top: "-=50", 
+    width: "50px", 
+    height: "35px" 
+  }, 1000, () => { 
+    $('.div2').text(`DONE`); 
+  }); 
+})
+
+
+
+

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<button id="myButton">Click me</button>
+<div id="output">Click the button to see the result.</div>
+
+<script>
+  // Wait for the document to be ready
+  $(document).ready(function() {
+    // Attach a click event handler to the button with the id "myButton"
+    $('#myButton').click(function() {
+      // This function will be executed when the button is clicked
+      $('#output').text('Button clicked!');
+    });
+  });
+</script>
+
+</body>
+</html>
+
+-------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hover Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    #myDiv {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+
+<div id="myDiv">Hover over me</div>
+<div id="output">Mouse is not over the element.</div>
+
+<script>
+  // Wait for the document to be ready
+  $(document).ready(function() {
+    // Select the element with the id "myDiv" and use .hover() to attach hover event handlers
+    $('#myDiv').hover(
+      function() {
+        // This function is executed when the mouse enters the element
+        $('#output').text('Mouse entered the element.');
+      },
+      function() {
+        // This function is executed when the mouse leaves the element
+        $('#output').text('Mouse left the element.');
+      }
+    );
+  });
+</script>
+
+</body>
+</html>
+----------------------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<form id="myForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  <br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+<div id="output"></div>
+
+<script>
+  // Wait for the document to be ready
+  $(document).ready(function() {
+    // Select the form with the id "myForm" and use .submit() to capture the form submission event
+    $('#myForm').submit(function(event) {
+      // Prevent the default form submission
+      event.preventDefault();
+      
+      // Get the values entered in the form fields
+      const name = $('#name').val();
+      const email = $('#email').val();
+      
+      // Display the form data in the "output" div
+      $('#output').html(`Name: ${name}<br>Email: ${email}`);
+    });
+  });
+
+</script>
+
+</body>
+</html>
+----------------------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Keypress Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<input type="text" id="myInput">
+<p id="output">Key pressed: </p>
+
+<script>
+  // Wait for the document to be ready
+  $(document).ready(function() {
+    // Select the input field with the id "myInput" and use .keypress() to capture keypress events
+    $('#myInput').keypress(function(event) {
+      // Get the key code of the pressed key
+      const keyCode = event.which;
+      
+      // Display the key code in the "output" paragraph
+      $('#output').text('Key pressed: ' + keyCode);
+    });
+  });
+</script>
+
+</body>
+
+</html>
+
+--------------------------------------------------------
+CSS Code:
+
+.box{ 
+border:1px solid #ddd; 
+height:50px; 
+width:100px; 
+} 
+
+HTML Code:
+<nav> 
+<div class="main"> 
+<div class="div1">Hello World 1</div> 
+<div class="div2"><span>Hello World 2</span></div> <div class="div3" id="div3">Hello World 3</div> 
+<div class="div4">Laurence Svekis</div> 
+
+<button id="btn1">1</button> 
+
+<button id="btn2">2</button> 
+<button id="btn3">3</button> 
+<span class="span1">Hello</span> 
+</div> 
+</nav> 
+<button id="btn4">4</button> 
+<button id="btn5">5</button> 
+
+JavaScript Code:
+$('.main div').addClass('box').hover(function(){ $(this).css('background-color','red')},function(){ $(this).css('background-color','white') 
+}).mouseenter(function(e){ 
+//$(this).text(`(X:${e.pageX} Y:${e.pageY}`); 
+}) 
+$('.main div').mouseup(function(){ 
+$(this).text('MOUSE UP'); 
+$(this).css('background-color','blue'); 
+}).mousedown(function(){ 
+$(this).text('MOUSE DOWN'); 
+$(this).css('background-color','green'); 
+
+}) 
+$('.main').mouseout(()=>{ 
+$('.div2').text('Mouse OUT on MAIN!'); }) 
+$('.main').mouseover(()=>{ 
+$('.div2').text('Mouse OVER on MAIN!'); }) 
+$('.main').mouseleave(()=>{ 
+$('.div3').text('Mouse LEFT on MAIN!'); }) 
+$('.main').mouseenter(()=>{ 
+$('.div3').text('Mouse ENTER on MAIN!'); }) 
+$('button').css('width','100px'); 
+$('button').mouseenter(function(e){ 
+$(this).css('background-color','red'); 
+}) 
+$('button').mouseleave(function(){ 
+$(this).css('background-color','white'); }) 
+$(document).mousemove(function(e){ 
+$('.div1').text(`(X:${e.pageX} Y:${e.pageY}`); }) 
+
+---------------------------------------------------
+
+CSS Code:
+
+.box { 
+border: 1px solid #ddd; 
+height: 50px; 
+width: 100px; 
+} 
+input{ 
+display:block; 
+} 
+
+HTML Code:
+
+<div class="main"></div> 
+<button id="btn1">1</button> 
+<button id="btn2">2</button> 
+<button id="btn3">3</button> 
+
+
+JavaScript Code
+
+Exercise Step 1: Using a loop, create several input fields and add them all to the main.
+
+for (let i = 0; i < 10; i++) {
+  const html = `Laurence ${i}`;
+  adder(html);
+}
+
+Exercise Step 2: On the input field, add the keydown() method to update the CSS background color and output the event method into the console, including the element index() value.
+
+$('input').keydown(function(e) {
+  console.log(e.key, e.code);
+  $(this).css('background-color', 'yellow');
+  console.log('keydown ' + $(this).index());
+})
+
+Exercise Step 3: On the input field, add the keypress() method to update the CSS background color and output the keypress into the console, including the element index() value.
+
+$('input').keypress(function(e) {
+  console.log(e.key, e.code);
+  $(this).css('background-color', 'red');
+  console.log('keypress ' + $(this).index());
+})
+
+Exercise Step 4: On the input field, add focus() and blur() methods to update the CSS background color and output the event methods into the console, including the element index() value.
+
+$('input').focus(function(e) {
+  $(this).css('color', 'red');
+  console.log('focus ' + $(this).index());
+})
+
+$('input').blur(function(e) {
+  $(this).css('color', 'green');
+  console.log('blur ' + $(this).index());
+})
+
+Exercise Step 5: On the input field, add the keyup() method to update the CSS background color and output the event method into the console, including the element index() value.
+
+$('input').keyup(function(e) {
+  console.log(e.key, e.code);
+  $(this).css('background-color', 'white');
+  console.log('keyup ' + $(this).index());
+})
+
+Exercise Step 6: On the input field, add focusin() and focusout() methods which will include the children, then update the CSS background color and output the event methods into the console, including the element index() value.
+
+$('input').focusin(function(e) {
+  $(this).css('color', 'blue');
+  console.log('focusIn ' + $(this).index());
+})
+
+$('input').focusout(function(e) {
+  $(this).css('color', 'pink');
+  console.log('focusOut ' + $(this).index());
+})
+
+Function to Add Input Fields (adder):
+function adder(val) {
+  $('<input>').attr({
+    type: 'text',
+    value: val
+  }).appendTo('.main');
+}
+-----------------------------------------------
+
+CSS Code:
+
+.box { 
+border: 1px solid #ddd; 
+height: 50px; 
+width: 100px; 
+} 
+input{ 
+display:block; 
+} 
+
+
+HTML:
+
+<div class="output"></div> 
+<form class="main"> 
+<input type="text" name="name" value="Laurence Svekis"> <input type="submit" value="Submit"> 
+</form> 
+<button id="btn1">1</button> 
+
+
+JavaScript:
+
+$('<select>').appendTo('.main'); 
+for(let i=0;i<5;i++){ 
+
+const counter = `${i+1} Value`; 
+$('<option>').val(counter).text(counter).appendTo('select'); } 
+$('select').change(function(){ 
+$('.output').text($(this).val()); 
+}) 
+$('input[type="text"]').change(function(){ $('.output').text($(this).val()); 
+}) 
+$(':input').select(function(){ 
+$('.output').text($(this).val()); 
+}) 
+$('.main').submit(function(e){ 
+e.preventDefault(); 
+console.log('form submitted'); 
+}) 
+$('#btn1').click(()=>{ 
+$('.main').submit(); 
+}) 
+---------------------------------------------------------------

@@ -1,0 +1,138 @@
+HTML Code
+
+<nav> 
+<div class="main"> 
+<div class="div1">Hello World 1</div> 
+<div class="div2"><span>Hello World 2</span></div> <div class="div3" id="div3">Hello World 3</div> 
+<div class="div4">Laurence Svekis</div> 
+<input> 
+<button id="btn1">1</button> 
+<button id="btn2">2</button> 
+<button id="btn3">3</button> 
+<span>Hello</span> 
+</div> 
+</nav> 
+<button id="btn4">4</button> 
+<button id="btn5">5</button> 
+
+JavaScript Code
+
+let counter = 0; 
+let temp = ''; 
+$('input').val('Laurence Svekis'); 
+$('.main div').click(function(){ 
+$(this).data('past',$(this).text()); counter++; 
+const temp = $('input').val(); 
+const html = `${temp} Counter : ${counter}`; $(this).html(html); 
+}) 
+$('#btn1').click(()=>{ 
+const val = $('.div1').data('past'); $('.div1').text(val); 
+console.log(val); 
+}) 
+$('#btn2').click(()=>{ 
+const val = $('.div2').data('past'); $('.div2').text(val); 
+console.log(val); 
+}) 
+$('#btn3').click(()=>{ 
+const val = $('.div3').data('past'); $('.div3').text(val); 
+console.log(val); 
+}) 
+$('#btn4').click(()=>{ 
+const val = $('.div4').data('past'); 
+
+$('.div4').text(val); 
+console.log(val); 
+}) 
+
+-----------------------------------------
+
+Using index() in code:
+
+<ol id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ol>
+
+$('#myList li').click(function() {
+    const position = $(this).index();
+    alert(`You clicked item ${position + 1}`);
+});
+
+--------------------------------------------------
+
+HTML
+
+<nav> 
+<div class="main"> 
+<div class="div1">Hello World 1</div> 
+<div class="div2"><span>Hello World 2</span></div> <div class="div3" id="div3">Hello World 3</div> 
+<div class="div4">Laurence Svekis</div> 
+<input> 
+<button id="btn1">1</button> 
+<button id="btn2">2</button> 
+<button id="btn3">3</button> 
+<span class="span1">Hello</span> 
+</div> 
+</nav> 
+<button id="btn4">4</button> 
+<button id="btn5">5</button> 
+
+JavaScript
+
+$('#btn1').click(()=>{ 
+const temp = $('.main div').get(1); 
+console.log(temp.innerHTML); 
+console.log(temp.textContent); 
+}) 
+$('#btn2').click(()=>{ 
+const len = $('.main div').length; 
+console.log(len); 
+let html = ''; 
+for(let i=0;i<len;i++){ 
+const temp = $('.main div').get(i); 
+console.log(temp.textContent); 
+html += `${i}. ${temp.textContent} `; 
+} 
+$('.main .span1').text(html); 
+}) 
+
+------------------------------------------------
+
+HTML 
+
+<nav> 
+<div class="main"> 
+<div class="div1">Hello World 1</div> 
+<div class="div2"><span>Hello World 2</span></div> <div class="div3" id="div3">Hello World 3</div> 
+<div class="div4">Laurence Svekis</div> 
+<input> 
+<button id="btn1">1</button> 
+<button id="btn2">2</button> 
+<button id="btn3">3</button> 
+<span class="span1">Hello</span> 
+</div> 
+</nav> 
+<button id="btn4">4</button> 
+<button id="btn5">5</button> 
+
+JavaScript
+
+$('#btn1').click(function(){ 
+console.log($(this).index()); 
+}) 
+$('.main div').click(function(){ 
+const val = $(this).index(); 
+const temp = $(this).text(); 
+$(this).text(`${val} ${temp}`); 
+}) 
+const $ul = $('<ul>').prependTo('nav'); 
+for(let i=0;i<10;i++){ 
+$('<li>').text(`${i} List 
+Item`).appendTo($ul).click(function(){ 
+console.log($(this).index()); 
+}) 
+} 
+------------------------------------------------
+
+

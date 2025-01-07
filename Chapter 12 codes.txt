@@ -1,0 +1,303 @@
+HTML
+
+   <div class="output"></div>
+   <div class="btns">
+       <button id="btn1">1</button>
+       <button id="btn2">2</button>
+       <button id="btn3">3</button>
+   </div>
+
+
+JavaScript
+
+$('#btn1').click(()=>{
+   $('.output').load('file1.txt',(rep,status,xhr)=>{
+       if(status == 'success'){
+           console.log(rep,status);
+           console.log('success!!!!');
+       }
+       console.log(xhr);
+   });
+})
+$('#btn2').click(()=>{
+   $('.output').load('file1.html');
+})
+$('#btn3').click(()=>{
+   $('.output').load('file1.txt');
+})
+
+-----------------------------------------------
+User.json file:
+{
+   "firstName": "Laurence",
+   "lastName": "Svekis",
+   "para": {
+      "first": "Laurence",
+      "last": "Svekis"
+   }
+}
+
+const url = 'https://script.google.com/macros/s/AKfycbzuGPGSdXCOOD9jQq4S0sx-OQxlOdL70sC_Z4AmWsRC6jnaxnwg8HGWfMBvalb-aD4U/exec';
+$('<input>').attr({
+   type:'text',
+   value:'Laurence',
+   name:'first'
+}).appendTo('.ins').before('First:').after('<br>');
+$('<input>').attr({
+   type:'text',
+   value:'Svekis',
+   name:'last'
+}).appendTo('.ins').before('Last:').after('<br>');
+
+
+$('#btn1').text('JSON File').click(()=>{
+    $.ajax({
+        url : 'user.json',
+        success: (result)=>{
+           console.log(result);
+           const html = `AJAX with file JSON data ${result.firstName} ${result.lastName}`;
+           $('<div>').html(html).appendTo('.output');
+        }
+    });
+});
+
+$('#btn2').text('AJAX GET').click(()=>{
+   $.ajax({
+       url:url,
+       type:'GET',
+       data:{
+           first : $('input').first().val(),
+           last : $('input').last().val()
+       },
+       dataType:'json'
+   })
+   .done((data)=>{
+       console.log(data);
+       const html = `AJAX with Data ${data.para.first} ${data.para.last}`;
+       $('<div>').html(html).appendTo('.output');
+   })
+   .fail((err)=>{
+       console.log(err);
+   })
+   .always((data)=>{
+       console.log(data);
+   })
+})
+
+$('#btn3').text('AJAX POST').click(()=>{
+   $.ajax({
+       url:url,
+       type:'POST',
+       data:{
+           first : $('input').first().val(),
+           last : $('input').last().val()
+       },
+       dataType:'json'
+   })
+   .done((data)=>{
+       console.log(data);
+       const html = `AJAX POST data ${data.para.first} ${data.para.last}`;
+       $('<div>').html(html).appendTo('.output');
+   })
+   .fail((err)=>{
+       console.log(err);
+   })
+   .always((data)=>{
+       console.log(data);
+   })
+})
+-----------------------------------------------
+
+
+$.ajax({
+    url: "https://api.example.com/data",
+    success: function(data) {
+        // Handle the data from the server
+        console.log(data);
+    }
+});
+
+---------------------------------------------------
+
+$.ajax({
+    url: "https://api.example.com/data",
+    error: function(xhr, status, error) {
+        // Handle the error
+        console.log("AJAX request failed with status: " + status);
+    }
+});
+
+------------------------------------------------
+
+$.ajax({
+    url: "https://api.example.com/data",
+    complete: function() {
+        // This code will run after the request is completed
+        console.log("Request completed.");
+    }
+});
+
+------------------------------------------
+HTML Code
+
+   <div class="output"></div>
+   <div class="btns">
+       <button id="btn1">1</button>
+       <button id="btn2">2</button>
+       <button id="btn3">3</button>
+   </div>
+
+JavaScript Code
+
+$('#btn1').click(adder1);
+$('#btn2').click(adder2);
+$('#btn3').click(adder3);
+
+function adder2(){
+   $.get('https://www.discoveryvip.com/shared/people.json',(data)=>{
+       console.log(data);
+       $.each(data.people,(ind,val)=>{
+           console.log(val.first);
+       });
+   })
+}
+function adder3(){
+   $.get('books.json',(data)=>{
+       console.log(data.books);
+       let val1 = JSON.stringify(data.books);
+       $.each(data.books,(ind,val)=>{
+           val1 += `<div>(${val.title}) `;
+           val1 += `(${val.author})</div>`;
+       });
+       $('<div>').html(val1).appendTo('.output');
+   })
+}
+
+
+function adder1(){
+   $.get('file1.json',(res)=>{
+       console.log(res);
+       let html = `${res.firstName} ${res.lastName}`;
+       $('<h2>').text(html).appendTo('.output');
+       const a = res.address;
+       const val1 = `${a.city}<br>${a.postalCode}<br>${a.state}<br>${a.streetAddress}`;
+       $('<div>').html(val1).appendTo('.output');
+       $ul = $('<ul>');
+       $ul.appendTo('.output');
+       $.each(res.phoneNumbers,(ind,val)=>{
+           console.log(val);
+           const temp = `${ind+1}. ${val.number} (${val.type})`;
+           $('<li>').text(temp).appendTo($ul);
+       })
+      
+   })
+}
+
+
+JSON 
+file1.json
+
+{"firstName":"Laurence","lastName":"Svekis","isAlive":true,"age":25,"address":{"streetAddress":"33 Street","city":"New York","state":"NY","postalCode":"10044"},"phoneNumbers":[{"type":"home","number":"1222-1234"},{"type":"office","number":"333 567-1234"},{"type":"mobile","number":"123 444-1234"}]}
+
+books.json
+{
+ "books": [
+ {
+ "title": "Learn to Code",
+ "author": "John Smith",
+ "isbn": "324-23243"
+ },
+ {
+ "title": "The Adventures JSON",
+ "author": "Jason Jones",
+ "isbn": "3324-2-444"
+ },
+ {
+ "title": "New Objects",
+ "author": "Jane Doe",
+ "isbn": "2343-234-2433"
+ }
+ ]
+}
+
+people.json
+{
+  "people": [
+    {
+      "first": "Laurence"
+      , "last": "Svekis"
+    }
+    , {
+      "first": "Laurence"
+      , "last": "Svekis"
+    }
+    , {
+      "first": "Laurence"
+      , "last": "Svekis"
+    }
+    , {
+      "first": "Laurence"
+      , "last": "Svekis"
+    }
+  ]
+}
+-----------------------------------------------
+const url = 'https://script.google.com/macros/s/AKfycbzuGPGSdXCOOD9jQq4S0sx-OQxlOdL70sC_Z4AmWsRC6jnaxnwg8HGWfMBvalb-aD4U/exec';
+$('<input>').attr({
+   type:'text',
+   value:'Laurence',
+   name:'first'
+}).appendTo('.ins').before('First:').after('<br>');
+$('<input>').attr({
+   type:'text',
+   value:'Svekis',
+   name:'last'
+}).appendTo('.ins').before('Last:').after('<br>');
+$('#btn1').click(adder1);
+$('#btn2').click(adder2);
+$('#btn3').click(adder3);
+$('#btn1').text('GET with para');
+$('#btn2').text('GET Script JS');
+$('#btn3').text('GET JSON');
+function adder1(){
+   const obj1 = {
+       first : $('input').first().val(),
+       last : $('input').last().val()
+   }
+   $.get(url,obj1,call1);
+}
+
+
+function call1(rep){
+   console.log(rep.para);
+   $.each(rep.para,(prop,val)=>{
+       console.log(val);
+       const html = `${prop}[${val}]`;
+       $('<div>').html(html).appendTo('.output');
+   })
+}
+
+
+function adder2(){
+   $.getScript('jsTwo.js',()=>{
+       logger('test working!');
+       $('<button>').text('Send Message').click(()=>{
+           logger($('input').first().val());
+       }).appendTo('.btns');
+   })
+}
+
+function adder3(){
+   const url1 = `${url}?id=5000`;
+   $.getJSON(url1,(data)=>{
+       console.log(data.para.id);
+   })
+}
+
+
+JSTwo.js
+function logger(val){
+   console.warn(val);
+}
+
+------------------------

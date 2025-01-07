@@ -1,0 +1,250 @@
+CSS:
+
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      transition: background-color 0.5s;
+    }
+  </style>
+
+HTML:
+
+  <div class="box"></div>
+  <button id="changeColor">Change Color</button>
+
+JS:
+
+    $('#changeColor').click(function () {
+      $('.box').css('background-color', 'lightcoral');
+    });
+
+------------------------------------------------
+
+HTML
+  <img id="myImage" src="image1.jpg" alt="Image 1">
+  <button id="toggleImage">Toggle Image</button>
+  
+JS:
+    $('#toggleImage').click(function () {
+      const image = $('#myImage');
+      const currentSrc = image.attr('src');
+      
+      if (currentSrc === 'image1.jpg') {
+        image.attr('src', 'image2.jpg');
+        image.attr('alt', 'Image 2');
+      } else {
+        image.attr('src', 'image1.jpg');
+        image.attr('alt', 'Image 1');
+      }
+    });
+
+--------------------------------------------------
+CSS:
+
+    .red {
+      color: red;
+    }
+    .blue {
+      color: blue;
+    }
+
+HTML:
+  <p id="myText">This text can change color.</p>
+  <button id="toggleRed">Toggle Red</button>
+  <button id="toggleBlue">Toggle Blue</button>
+  
+JS:
+    $('#toggleRed').click(function () {
+      $('#myText').addClass('red'); // Add the 'red' class
+      $('#myText').removeClass('blue'); // Remove the 'blue' class
+    });
+    
+    $('#toggleBlue').click(function () {
+      $('#myText').addClass('blue'); // Add the 'blue' class
+      $('#myText').removeClass('red'); // Remove the 'red' class
+    });
+
+--------------------------------------------------------
+HTML:
+
+<button id="btn1">Button 1</button>
+<button id="btn2">Button 2</button>
+<div></div>
+<div></div>
+
+------------------------------------------------------------
+$('#btn1').click(() => {
+  $('div').toggleClass('red');
+  $('div').css('width', '100px');
+});
+
+$('#btn2').click(() => {
+  $('div').toggleClass('blue');
+  $('div').css('width', '+=50');
+});
+
+--------------------------------------------------------
+$('div').click(function () {
+  const rc = '#' + Math.random().toString(16).substring(2, 8);
+  const rc2 = '#' + Math.random().toString(16).substring(2, 8);
+  $(this).css('background-color', rc);
+  $(this).css('color', rc2);
+
+  // Retrieve multiple style properties and store them in 'temp'.
+  const temp = $(this).css(['color', 'background-color', 'height', 'font-size', 'width']);
+
+  // Create an HTML string to display the style properties.
+  let elText = $(this).text();
+  let html = `<h1>${elText}</h1><ul>`;
+  for (const prop in temp) {
+    html += `<li>${prop}:${temp[prop]}</li>`;
+  }
+  html += '</ul>';
+
+  // Display the style properties in one of the page elements.
+  output(html);
+});
+---------------------------------------------------------------------
+CSS:
+        .red {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .box {
+            width: 200px;
+            height: 35px;
+            border: 1px solid #ddd;
+        }
+
+
+HTML:
+    <div class="div1">Hello World 1</div>
+    <div class="div2">Hello World 2</div>
+    <div class="div3" id="div3">Hello World 3</div>
+    <div class="div4">Laurence Svekis</div>
+    <input>
+    <button id="btn1">1</button>
+    <button id="btn2">2</button>
+
+JavaScript Code:
+
+let counter = 0;
+const arr = [];
+
+for (let i = 0; i < 5; i++) {
+    $('<input>').attr({
+        type: 'checkbox',
+        value: i,
+        checked: 'checked'
+    }).appendTo('.div3').click(function () {
+        checkerInput($(this));
+    });
+}
+
+for (let i = 0; i < 5; i++) {
+    $ele = $('<input>');
+    $ele.attr({
+        type: 'checkbox',
+        value: i
+    }).appendTo('.div4');
+    $ele.prop('checked', true);
+    $ele.click(function () {
+        checkerInput($(this));
+    });
+}
+
+function checkerInput($el) {
+    let temp = '';
+    temp += `<div>Attr : ${$el.attr('checked')}</div>`;
+    temp += `<div>Prop : ${$el.prop('checked')}</div>`;
+    temp += `<div>Is : ${$el.is(':checked')}</div>`;
+    $('.div1').html(temp);
+}
+
+$('.div2').click(function () {
+    counter++;
+    $('.div1').html(`<div>Counter ${counter}</div>`);
+});
+
+$('.div2').click(function () {
+    console.log($(this).attr('id'));
+    const ran = Math.floor(Math.random() * 100);
+    $(this).attr('id', `id${ran}`);
+});
+
+$('#btn1').click(() => {
+    if (arr.length > 0) {
+        $ele = arr.shift();
+        $('.div4').append($ele);
+    }
+    $('input').attr({
+        type: 'number',
+        min: '0',
+        max: '10',
+        value: '5'
+    });
+});
+
+$('#btn2').click(() => {
+    $ele = $('.div1').detach();
+    arr.push($ele);
+});
+
+------------------------------------------------------------
+CSS
+        .box {
+            width: 200px;
+            border: 5px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+        }
+
+HTML
+    <div class="div1">Hello World 1</div>
+    <div class="div2">Hello World 2</div>
+    <div class="div3" id="div3">Hello World 3</div>
+    <div class="div4">Laurence Svekis</div>
+    <input>
+    <button id="btn1">1</button>
+
+
+JavaScript Code
+$('div').addClass('box').click(function () {
+    let html = `<div>Width : ${$(this).width()}</div>`;
+    html += `<div>Height : ${$(this).height()}</div>`;
+    html += `<div>Inner Width : ${$(this).innerWidth()}</div>`;
+    html += `<div>Inner Height : ${$(this).innerHeight()}</div>`;
+    html += `<div>Outer Width : ${$(this).outerWidth()}</div>`;
+    html += `<div>Outer Height : ${$(this).outerHeight()}</div>`;
+    html += `<div>Outer Width (incl. margins) : ${$(this).outerWidth(true)}</div>`;
+    html += `<div>Outer Height (incl. margins) : ${$(this).outerHeight(true)}</div>`;
+    $(this).html(html);
+});
+
+$('#btn1').click(() => {
+    console.log(`Document Width: ${$(document).width()}px`);
+    console.log(`Window Width: ${$(window).width()}px`);
+    console.log(`Document Height: ${$(document).height()}px`);
+    console.log(`Window Height: ${$(window).height()}px`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+

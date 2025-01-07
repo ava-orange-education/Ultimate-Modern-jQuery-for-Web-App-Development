@@ -1,0 +1,81 @@
+$(element).addClass(class1 [, class2, class3, ...]);
+Example:
+// Add the class 'highlight' to a button when clicked
+$('button').click(function () {
+  $(this).addClass('highlight');
+});
+
+-----------------------------------------------
+// Remove the class 'active' from a navigation item when it's no longer active
+$('.nav-item').removeClass('active');
+
+-----------------------------------------------
+
+HTML
+
+<div class="original-element">Hello, World!</div>
+<div id="cloned-elements-container"></div>
+
+jQuery
+
+$(document).ready(function() {
+    const $originalElement = $('.original-element');
+    const $cloneElement = $originalElement.clone();
+
+    // Modify the content of the cloned element
+    $cloneElement.text("I am a clone!");
+
+    // Append the cloned element to a specific container
+    $('#cloned-elements-container').append($cloneElement);
+});
+
+----------------------------------------------------
+
+const $existingElement = $('.existing-element');
+const $newElement = $('<div>New Content</div>');
+$existingElement.replaceWith($newElement);
+
+----------------------------------------------------
+HTML
+
+<div class="blue">Click me (I'm blue)</div>
+<div>Click me (No color)</div>
+<div class="red">Click me (I'm red)</div>
+<div>Click me (No color)</div>
+<div class="blue">Click me (I'm blue)</div>
+
+CSS
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+
+jQuery
+
+$('div').click(function(){
+  console.log($(this)); // Output the clicked element
+  const boo = $(this).hasClass('red'); // Check if the element has the 'red' class
+  console.log(boo); // Output the result (true or false)
+  if(boo){
+    $(this).text('Already Red!!!'); // If it has the 'red' class, set text
+  } else {
+    $(this).text('Changed to Red'); // If not, set different text
+  }
+  $(this).addClass('red'); // Add the 'red' class
+  $(this).removeClass('blue'); // Remove the 'blue' class
+}) 
+
+------------------------------------------------
+
+$('#btn1').click(() => {
+  $('div').addClass('blue'); // Add the 'blue' class to all div elements
+});
+
+------------------------------------------
+
+$('#btn2').click(() => {
+  $('div').toggleClass('red'); // Toggle the 'red' class
+  $('div').toggleClass('blue'); // Toggle the 'blue' class
+});

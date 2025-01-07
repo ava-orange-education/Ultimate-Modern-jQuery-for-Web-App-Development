@@ -1,0 +1,32 @@
+li span {
+  padding: 5px;
+}
+
+.red span {
+  color: red;
+  text-decoration: line-through;
+}
+
+li button {
+  font-size: 0.5em;
+  background-color: red;
+  color: white;
+}
+
+----------------------------------------
+
+<ul class="output"></ul>
+<input type="text" value="test" id="myIn">
+<button id="btn1">Add to List</button>
+
+---------------------------------------
+
+const val = $('input').val().trim(); // Use trim() to remove any leading/trailing whitespace
+if (val === '') {
+        alert('Please enter some text.'); // Simple alert for empty input
+        return; // Exit the function if input is empty
+}
+--------------------------------------------------------------------
+
+
+

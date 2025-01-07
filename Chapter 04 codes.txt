@@ -1,0 +1,69 @@
+let counter = 0;
+
+for (let i = 0; i < 10; i++) {
+  counter++;
+  const $span = $(`<span>Hello :${counter}</span>`);
+  $span.text('New');
+  $('.div2').append($span);
+}
+
+-----------------------------------------------
+for (let i = 0; i < 3; i++) {
+  const $btn = $(`<button>After ${i + 1}</button>`);
+  $('.div4').after($btn);
+
+  $btn.click(function () {
+    console.log($(this).text());
+  });
+
+  $(`<button>Before ${i + 1}</button>`).insertBefore('.div4').click(function () {
+    console.log($(this).text());
+  });
+}
+-----------------------------------------------------
+
+$('#btn1').click(() => {
+  const val = $('input').val();
+  $('.div1').text(val);
+  $('.div2').append(val);
+  $('.div3').prepend(val);
+  $('.div4').remove();
+});
+
+---------------------------------------------------
+
+$('#btn2').click(() => {
+  counter++;
+  const $div = $(`<div>Hello :${counter}</div>`);
+  $('.div3').append($(`<div>Hello :${counter}</div>`));
+  $(`<div>Hello :${counter}</div>`).appendTo('.div3');
+  console.log($div);
+});
+
+-------------------------------------------------
+
+$('#btn1').click(() => {
+  // Using .replaceAll() to replace selected elements with new content
+  $('<h3>Hello</h3>').replaceAll('.div3');
+  
+  // Using .replaceWith() to replace the entire .div2 with new content
+  $('.div2').replaceWith('<h3>Hello 3</h3>');
+});
+
+--------------------------------------------------
+
+$('#btn2').click(() => {
+  // Clone the input element with id 'myIn'
+  const $ele = $('#myIn').clone();
+  
+  // Log the cloned element to the console
+  console.log($ele);
+  
+  // Clone and prepend the last input element to the first div element
+  $('input').last().clone().prependTo('div');
+});
+
+------------------------------------------------
+
+
+

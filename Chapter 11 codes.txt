@@ -1,0 +1,147 @@
+<button id="myButton">Click Me</button>
+
+JavaScript (jQuery):
+$(document).ready(function() {
+  // Attach a click event handler to the button element with the ID "myButton"
+  $('#myButton').on('click', function() {
+    alert('Button clicked!');
+  });
+});
+
+---------------------------------------------
+CSS:
+.box { 
+border: 1px solid #ddd; 
+height: 50px; 
+width: 100px; 
+} 
+
+input{ 
+display:block; 
+} 
+.active{ 
+background-color:red; 
+color:green; 
+} 
+
+HTML:
+<div class="output"></div> 
+<div class="btns"> 
+<button id="btn1">1</button> 
+<button id="btn2">2</button> 
+<button id="btn3">3</button> 
+</div> 
+
+JavaScript:
+$('<div>').text('LaurenceSvekis').addClass('box').prependTo('bod y'); 
+$('.box').on({ 
+
+click : function() {$(this).toggleClass('active')}, mouseenter:function(){$(this).css('background-color','blue')} , 
+mouseleave:function(){$(this).css('background-color','white')} }) 
+$('.btns').on('click','button',function(){ 
+const val = `${$(this).index()} index button`; 
+$('.output').text(val); 
+}) 
+const obj = { 
+first : 'Laurence', 
+last : 'Svekis', 
+id : 100 
+}; 
+$('.output').on('click',obj,adder); 
+function adder(e){ 
+console.log(e.data); 
+} 
+$('.btns button').click(function(){ 
+const val = `${$(this).index()} index button`; 
+$(this).css('background-color','red'); 
+console.log(val); 
+}) 
+
+for(let i=0;i<5;i++){ 
+const temp = `${i+4}`; 
+$('<button>').text(temp).appendTo('.btns'); 
+} 
+----------------------------------------------------------
+  <div id="parent">
+    <button id="child">Click Me</button>
+  </div>
+  <script>
+    $(document).ready(function() {
+      $("#child").click(function(event) {
+        alert("Child button clicked!");
+        event.stopPropagation(); // Prevent the event from reaching the parent
+      });
+
+      $("#parent").click(function() {
+        alert("Parent div clicked!");
+      });
+    });
+  </script>
+----------------------------------------------------------------
+
+<a id="link" href="https://www.example.com">Click Me</a>
+  <form id="myForm">
+    <input type="text" name="username" placeholder="Enter your username">
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    $(document).ready(function() {
+      $("#link").click(function(event) {
+        event.preventDefault(); // Prevent the link from navigating to another page
+        alert("Link clicked, but default behavior prevented.");
+      });
+
+      $("#myForm").submit(function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+        alert("Form submitted, but default behavior prevented.");
+      });
+    });
+  </script>
+
+---------------------------------------------------------------
+
+CSS Code:
+
+       .box {
+           border: 1px solid #ddd;
+           height: 50px;
+           width: 100px;
+       }
+       input{
+           display:block;
+       }
+       .active{
+           background-color:red;
+           color:green;
+       }
+
+HTML Code:
+
+   <div class="output"></div>
+   <div class="btns">
+       <button id="btn1">1</button>
+       <button id="btn2">2</button>
+       <button id="btn3">3</button>
+   </div>
+
+JavaScript Code:
+
+let counter = 1;
+$('button').click(()=>{
+   counter++;
+   const r = Math.floor(Math.random()*200)+100;
+   const c = '#'+Math.random().toString(16).substring(2,8);
+   const id = 'id'+counter;
+   $('<div>').text('New Div').css('height',r+'px').attr('id',id).css('background-color',c).appendTo('body');
+   //output
+   $('<a>').attr('href','#'+id).text(id+' ').appendTo('.output');
+})
+$(window).scroll((e)=>{
+   console.log(e);
+})
+$(window).resize((e)=>{
+   console.log($(window).height());
+   console.log($(document).height());
+})
+
+-------------------
